@@ -50,7 +50,7 @@ func main() {
 	}()
 
 	router := mux.NewRouter()
-	grpcConn, err := grpc.NewClient(":50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	grpcConn, err := grpc.NewClient(":50052", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Failed to connect to gRPC: %v", err)
 	}
