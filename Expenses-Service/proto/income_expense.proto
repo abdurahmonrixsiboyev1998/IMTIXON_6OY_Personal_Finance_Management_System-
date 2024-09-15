@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package = "/proto";
+
+service TransactionService {
+  rpc LogIncome (TransactionRequest) returns (TransactionResponse);
+  rpc LogExpense (TransactionRequest) returns (TransactionResponse);
+  rpc GetTransactions (GetTransactionsRequest) returns (GetTransactionsResponse);
+}
+
+message TransactionRequest {
+  double amount = 1;
+  string currency = 2;
+  string category = 3;
+  string date = 4;
+}
+
+message TransactionResponse {
+  string message = 1;
+  string transactionId = 2;
+}
+
+message GetTransactionsRequest {
+  string userId = 1;
+}
+
+message GetTransactionsResponse {
+  repeated Transaction transactions = 1;
+}
+
+message Transaction {
+  string transactionId = 1;
+  string type = 2; 
+  double amount = 3;
+  string currency = 4;
+  string category = 5;
+  string date = 6;
+}
